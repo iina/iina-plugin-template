@@ -1,0 +1,84 @@
+{
+  "name": "{{name}}",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+{{#useBundler}}
+{{#hasWindow}}
+    "serve-window": "parcel serve ui/window/index.html --dist-dir dist/ui/window",
+{{/hasWindow}}
+{{#hasSidebar}}
+    "serve-sidebar": "parcel serve ui/sidebar/index.html --dist-dir dist/ui/sidebar",
+{{/hasSidebar}}
+{{#hasOverlay}}
+    "serve-overlay": "parcel serve ui/overlay/index.html --dist-dir dist/ui/overlay",
+{{/hasOverlay}}
+    "build": "rm -rf dist && parcel build .",
+{{/useBundler}}
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+{{#useBundler}}
+    "@parcel/transformer-sass": "^2.8.3",
+{{/useBundler}}
+    "iina-plugin-definition": "^0.0.7",
+{{#useBundler}}
+    "prettier": "^2.8.8",
+    "process": "^0.11.10"
+{{/useBundler}}
+  },
+  "dependencies": {
+{{#useBundler}}
+    "parcel": "^2.8.3",
+    "parcel-optimizer-webview": "git+https://github.com/iina/parcel-optimizer-webview.git",
+{{/useBundler}}
+{{#useReact}}
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+{{/useReact}}
+{{#useVue}}
+    "vue": "^3.3.4"
+{{/useVue}}
+  },
+  "browserslist": "safari >= 9",
+  "entry": "src/index.js",
+  "targets": {
+    "main": false,
+{{#hasWindow}}
+    "window": {
+      "distDir": "./dist/ui/window",
+      "source": "ui/window/index.html",
+      "publicUrl": "./"
+    },
+{{/hasWindow}}
+{{#hasOverlay}}
+    "overlay": {
+      "distDir": "./dist/ui/overlay",
+      "source": "ui/overlay/index.html",
+      "publicUrl": "./"
+    },
+{{/hasOverlay}}
+{{#hasSidebar}}
+    "sidebar": {
+      "distDir": "./dist/ui/sidebar",
+      "source": "ui/sidebar/index.html",
+      "publicUrl": "./"
+    },
+{{/hasSidebar}}
+{{#hasGlobal}}
+    "global": {
+      "distDir": "./dist/",
+      "source": "src/global.js",
+      "isLibrary": false
+    },
+{{/hasGlobal}}
+    "entry": {
+      "distDir": "./dist/",
+      "source": "src/index.js",
+      "isLibrary": false
+    }
+  }
+}

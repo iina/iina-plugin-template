@@ -1,0 +1,44 @@
+const {
+{{#hasWindow}}
+  standaloneWindow,
+{{/hasWindow}}
+{{#hasOverlay}}
+  overlay,
+{{/hasOverlay}}
+{{#hasSidebar}}
+  sidebar,
+{{/hasSidebar}}
+  console,
+  menu
+} = iina;
+//
+console.log("Plugin is running");
+//
+{{#hasWindow}}
+standaloneWindow.loadFile({{#useBundler}}"dist/ui/window/index.html"{{/useBundler}}{{^useBundler}}"ui/window/index.html"{{/useBundler}});
+//
+menu.addItem(
+  menu.item("Show Window", () => {
+    standaloneWindow.open();
+  }),
+);
+{{/hasWindow}}
+//
+{{#hasOverlay}}
+overlay.loadFile({{#useBundler}}"dist/ui/overlay/index.html"{{/useBundler}}{{^useBundler}}"ui/overlay/index.html"{{/useBundler}});
+//
+menu.addItem(
+  menu.item("Show Video Overlay", () => {
+    overlay.show()
+  }),
+);
+menu.addItem(
+  menu.item("Hide Video Overlay", () => {
+    overlay.hide()
+  }),
+);
+{{/hasOverlay}}
+//
+{{#hasSidebar}}
+sidebar.loadFile({{#useBundler}}"dist/ui/sidebar/index.html"{{/useBundler}}{{^useBundler}}"ui/sidebar/index.html"{{/useBundler}});
+{{/hasSidebar}}

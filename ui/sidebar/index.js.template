@@ -1,0 +1,21 @@
+{{#hasUI}}
+import "../shared.scss";
+//
+{{/hasUI}}
+{{#useReact}}
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./app.jsx";
+//
+document.addEventListener("DOMContentLoaded", () => {
+  ReactDOM.render(<App>Hello, world!</App>, document.getElementById("root"));
+});
+{{/useReact}}
+{{#useVue}}
+import { createApp } from "vue";
+import App from "./app.vue";
+//
+document.addEventListener("DOMContentLoaded", () => {
+  createApp(App).mount("#root");
+});
+{{/useVue}}
