@@ -17,6 +17,9 @@
     "file-system",
     "network-request"
   ],
+  {{#hasSidebar}}"sidebarTab": {
+    "name": "Tab"
+  },{{/hasSidebar}}
   "allowedDomains": ["*"],
   "preferencesPage": "pref.html",
   "preferenceDefaults": {}

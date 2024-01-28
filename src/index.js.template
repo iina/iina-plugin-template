@@ -7,9 +7,10 @@ const {
 {{/hasOverlay}}
 {{#hasSidebar}}
   sidebar,
+  event,
 {{/hasSidebar}}
   console,
-  menu
+  menu,
 } = iina;
 //
 console.log("Plugin is running");
@@ -40,5 +41,7 @@ menu.addItem(
 {{/hasOverlay}}
 //
 {{#hasSidebar}}
-sidebar.loadFile({{#useBundler}}"dist/ui/sidebar/index.html"{{/useBundler}}{{^useBundler}}"ui/sidebar/index.html"{{/useBundler}});
+event.on("iina.window-loaded", () => {
+  sidebar.loadFile({{#useBundler}}"dist/ui/sidebar/index.html"{{/useBundler}}{{^useBundler}}"ui/sidebar/index.html"{{/useBundler}});
+});
 {{/hasSidebar}}
