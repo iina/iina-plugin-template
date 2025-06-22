@@ -10,7 +10,7 @@
   },
   "entry": {{#useBundler}}"dist/index.js"{{/useBundler}}{{^useBundler}}"src/index.js"{{/useBundler}},
 {{#hasGlobal}}
-  "global": {{#useBundler}}"dist/global.js"{{/useBundler}}{{^useBundler}}"src/global.js"{{/useBundler}},
+  "globalEntry": {{#useBundler}}"dist/global.js"{{/useBundler}}{{^useBundler}}"src/global.js"{{/useBundler}},
 {{/hasGlobal}}
   "permissions": [
     "show-osd",
