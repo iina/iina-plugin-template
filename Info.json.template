@@ -14,8 +14,10 @@
 {{/hasGlobal}}
   "permissions": [
     "show-osd",
-    "file-system",
-    "network-request"
+    "show-alert",
+    "video-overlay",
+    "network-request",
+    "file-system"
   ],
   {{#hasSidebar}}"sidebarTab": {
     "name": "Tab"
