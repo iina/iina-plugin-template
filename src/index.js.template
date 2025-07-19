@@ -26,18 +26,20 @@ menu.addItem(
 {{/hasWindow}}
 //
 {{#hasOverlay}}
-overlay.loadFile({{#useBundler}}"dist/ui/overlay/index.html"{{/useBundler}}{{^useBundler}}"ui/overlay/index.html"{{/useBundler}});
+event.on("iina.window-loaded", () => {
+  overlay.loadFile({{#useBundler}}"dist/ui/overlay/index.html"{{/useBundler}}{{^useBundler}}"ui/overlay/index.html"{{/useBundler}});
 //
-menu.addItem(
-  menu.item("Show Video Overlay", () => {
-    overlay.show()
-  }),
-);
-menu.addItem(
-  menu.item("Hide Video Overlay", () => {
-    overlay.hide()
-  }),
-);
+  menu.addItem(
+    menu.item("Show Video Overlay", () => {
+      overlay.show()
+    }),
+  );
+  menu.addItem(
+    menu.item("Hide Video Overlay", () => {
+      overlay.hide()
+    }),
+  );
+});
 {{/hasOverlay}}
 //
 {{#hasSidebar}}
